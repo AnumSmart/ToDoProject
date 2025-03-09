@@ -1,7 +1,13 @@
 package main
 
-import "fmt"
+import (
+	"log"
+	todo "todoproject"
+)
 
 func main() {
-	fmt.Println("Test app")
+	srv := new(todo.Server)
+	if err := srv.Run("8080"); err != nil {
+		log.Fatalf("error occured while running http server: %s\n", err.Error())
+	}
 }
